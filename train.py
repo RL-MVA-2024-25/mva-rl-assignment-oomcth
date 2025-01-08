@@ -17,14 +17,14 @@ def get_device():
 
 
 envfix = TimeLimit(
-    env=FastHIVPatient(
+    env=HIVPatient(
         domain_randomization=False,
         logscale=False
         ), max_episode_steps=200
 )
 
 envchange = TimeLimit(
-    env=FastHIVPatient(
+    env=HIVPatient(
         domain_randomization=True,
         logscale=False
         ), max_episode_steps=200
@@ -277,13 +277,13 @@ def train_agent(env, num_iterations=1_000, buffer_size=10_000,
             target_network.load_state_dict(q_network.state_dict())
 
     if debug:
-        # Plot rewards at the end of training
-        # plt.figure(figsize=(10, 5))
-        # plt.plot(episode_rewards)
-        # plt.title('Episode Rewards over Time')
-        # plt.xlabel('Episode')
-        # plt.ylabel('Reward')
-        # plt.show()
+#         Plot rewards at the end of training
+        plt.figure(figsize=(10, 5))
+        plt.plot(episode_rewards)
+        plt.title('Episode Rewards over Time')
+        plt.xlabel('Episode')
+        plt.ylabel('Reward')
+        plt.show()
 
         print("\nTraining finished!")
         print(f"Final running reward: {running_reward:.2f}")
