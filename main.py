@@ -22,20 +22,6 @@ def seed_everything(seed: int = 42):
 
 if __name__ == "__main__":
     seed_everything(seed=42)
-    q_network, rewards = train.train_agent(
-        TimeLimit(
-                    env=HIVPatient(
-                        domain_randomization=False,
-                        logscale=False
-                        ), max_episode_steps=200
-                ), debug=True, print_freq=100)
-    # while max(rewards) < 50:
-    #     print("test")
-    #     q_network, rewards = train_agent(env, debug=True, print_freq=100)
-
-    torch.save(q_network.state_dict(), 'model.pth')
-    torch.save(rewards, "rewards.pth")
-    # print(rewards)
 
     # Initialization of the agent. Replace DummyAgent with your custom agent implementation.
     state_dim = 6
